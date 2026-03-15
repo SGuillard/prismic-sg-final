@@ -1,6 +1,6 @@
 import { Content } from "@prismicio/client";
 import { PrismicNextLink } from "@prismicio/next";
-import { SliceComponentProps } from "@prismicio/react";
+import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { createClient } from "@/prismicio";
 
 /**
@@ -33,7 +33,12 @@ const BlogList = async ({ slice }: BlogListProps) => {
       className="blog-list"
     >
       <div className="blog-list__header">
-        <p className="blog-list__eyebrow">Insights</p>
+        <p className="blog-list__eyebrow">{slice?.primary?.title}</p>
+        {slice?.primary?.intro ? (
+          <div className="blog-list__intro">
+            <PrismicRichText field={slice.primary.intro} />
+          </div>
+        ) : null}
         <h2 className="blog-list__title">Latest blog posts</h2>
       </div>
 
@@ -96,6 +101,13 @@ const BlogList = async ({ slice }: BlogListProps) => {
             font-size: clamp(1.6rem, 2.5vw, 2.2rem);
             line-height: 1.2;
             color: #111827;
+          }
+
+          .blog-list__intro :where(p) {
+            margin: 0.5rem 0 0;
+            color: #4b5563;
+            font-size: 0.95rem;
+            line-height: 1.5;
           }
 
           .blog-list__grid {

@@ -14,8 +14,16 @@
 					{
 						"type": "paragraph",
 						"content": {
-							"text": "Veniam ex nisi nostrud ad ullamco minim occaecat ex reprehenderit nostrud minim laborum reprehenderit."
-						}
+							"text": "Veniam ex nisi nostrud ad ullamco minim occaecat ex reprehenderit nostrud minim laborum reprehenderit.",
+							"spans": [
+								{
+									"type": "strong",
+									"start": 15,
+									"end": 22
+								}
+							]
+						},
+						"direction": "ltr"
 					}
 				]
 			}

@@ -139,43 +139,17 @@ export type BlogpostDocument<Lang extends string = string> =
  */
 interface GlobalNavDocumentData {
   /**
-   * blog field in *global_nav*
+   * HeaderLink field in *global_nav*
    *
    * - **Field Type**: Link
    * - **Placeholder**: *None*
-   * - **API ID Path**: global_nav.blog
+   * - **API ID Path**: global_nav.headerlink
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/fields/link
    */
-  blog: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
-
-  /**
-   * contact field in *global_nav*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: global_nav.contact
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/fields/link
-   */
-  contact: prismic.LinkField<
-    string,
-    string,
-    unknown,
-    prismic.FieldState,
-    never
+  headerlink: prismic.Repeatable<
+    prismic.LinkField<string, string, unknown, prismic.FieldState, never>
   >;
-
-  /**
-   * home field in *global_nav*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: global_nav.home
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/fields/link
-   */
-  home: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 }
 
 /**
