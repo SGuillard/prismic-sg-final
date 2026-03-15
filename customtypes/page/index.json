@@ -27,6 +27,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "hero_global": {
+              "type": "SharedSlice"
+            },
             "blog_list": {
               "type": "SharedSlice"
             },

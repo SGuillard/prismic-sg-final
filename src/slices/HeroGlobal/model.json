@@ -1,0 +1,34 @@
+{
+  "id": "hero_global",
+  "type": "SharedSlice",
+  "name": "HeroGlobal",
+  "description": "HeroGlobal",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "heromain": {
+          "type": "Image",
+          "config": {
+            "label": "HeroMain",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "herotitle": {
+          "type": "Text",
+          "config": {
+            "label": "HeroTitle",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

@@ -69,7 +69,7 @@ type ContentRelationshipFieldWithData<
   >;
 }[Exclude<TCustomType[number], string>["id"]];
 
-type BlogpostDocumentDataSlicesSlice = HeroSlice;
+type BlogpostDocumentDataSlicesSlice = HeroGlobalSlice;
 
 /**
  * Content for blogPost documents
@@ -194,7 +194,10 @@ export type GlobalNavDocument<Lang extends string = string> =
     Lang
   >;
 
-type PageDocumentDataSlicesSlice = BlogListSlice | RichTextSlice;
+type PageDocumentDataSlicesSlice =
+  | HeroGlobalSlice
+  | BlogListSlice
+  | RichTextSlice;
 
 /**
  * Content for Page documents
@@ -541,6 +544,61 @@ type Hero2SliceVariation = Hero2SliceDefault | Hero2SliceImageRight;
 export type Hero2Slice = prismic.SharedSlice<"hero_2", Hero2SliceVariation>;
 
 /**
+ * Primary content in *HeroGlobal → Default → Primary*
+ */
+export interface HeroGlobalSliceDefaultPrimary {
+  /**
+   * HeroMain field in *HeroGlobal → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_global.default.primary.heromain
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  heromain: prismic.ImageField<never>;
+
+  /**
+   * HeroTitle field in *HeroGlobal → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_global.default.primary.herotitle
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  herotitle: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for HeroGlobal Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type HeroGlobalSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<HeroGlobalSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *HeroGlobal*
+ */
+type HeroGlobalSliceVariation = HeroGlobalSliceDefault;
+
+/**
+ * HeroGlobal Shared Slice
+ *
+ * - **API ID**: `hero_global`
+ * - **Description**: HeroGlobal
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type HeroGlobalSlice = prismic.SharedSlice<
+  "hero_global",
+  HeroGlobalSliceVariation
+>;
+
+/**
  * Primary content in *RichText → Default → Primary*
  */
 export interface RichTextSliceDefaultPrimary {
@@ -629,6 +687,10 @@ declare module "@prismicio/client" {
       Hero2SliceVariation,
       Hero2SliceDefault,
       Hero2SliceImageRight,
+      HeroGlobalSlice,
+      HeroGlobalSliceDefaultPrimary,
+      HeroGlobalSliceVariation,
+      HeroGlobalSliceDefault,
       RichTextSlice,
       RichTextSliceDefaultPrimary,
       RichTextSliceVariation,

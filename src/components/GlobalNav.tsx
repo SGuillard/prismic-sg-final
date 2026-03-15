@@ -5,15 +5,24 @@ type GlobalNavProps = {
   navigation: Content.GlobalNavDocument["data"];
 };
 
-const navItems: Array<{
-  key: keyof Content.GlobalNavDocument["data"];
-  label: string;
-}> = [
-  { key: "blog", label: "Blog" },
-  { key: "contact", label: "Contact" },
-];
-
 export default function GlobalNav({ navigation }: GlobalNavProps) {
+  const navItems = Object.entries(navigation).flatMap(([key, field]) => {
+    if (!isFilled.link(field)) {
+      return [];
+    }
+
+    return [
+      {
+        key,
+        field,
+        label: key
+          .split("_")
+          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(" "),
+      },
+    ];
+  });
+
   return (
     <header>
       <nav aria-label="Global">
@@ -26,21 +35,13 @@ export default function GlobalNav({ navigation }: GlobalNavProps) {
             padding: "1rem",
           }}
         >
-          {navItems.map((item) => {
-            const linkField = navigation[item.key];
-
-            if (!isFilled.link(linkField)) {
-              return null;
-            }
-
-            return (
-              <li key={item.key}>
-                <PrismicNextLink field={linkField}>
-                  {linkField.text || item.label}
-                </PrismicNextLink>
-              </li>
-            );
-          })}
+          {navItems.map((item) => (
+            <li key={item.key}>
+              <PrismicNextLink field={item.field}>
+                {item.field.text || item.label}
+              </PrismicNextLink>
+            </li>
+          ))}
         </ul>
       </nav>
     </header>
