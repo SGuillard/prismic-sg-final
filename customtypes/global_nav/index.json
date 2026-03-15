@@ -1,0 +1,44 @@
+{
+  "format": "custom",
+  "id": "global_nav",
+  "label": "global_nav",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "blog": {
+        "type": "Link",
+        "config": {
+          "label": "blog",
+          "placeholder": "",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": true,
+          "repeat": false
+        }
+      },
+      "contact": {
+        "type": "Link",
+        "config": {
+          "label": "contact",
+          "placeholder": "",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": true,
+          "repeat": false
+        }
+      },
+      "home": {
+        "type": "Link",
+        "config": {
+          "label": "home",
+          "placeholder": "",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": true,
+          "repeat": false
+        }
+      }
+    }
+  }
+}
