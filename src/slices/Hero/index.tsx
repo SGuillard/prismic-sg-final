@@ -1,5 +1,6 @@
 import { FC } from "react";
-import { Content } from "@prismicio/client";
+import { Content, isFilled } from "@prismicio/client";
+import { PrismicNextImage } from "@prismicio/next";
 import { SliceComponentProps } from "@prismicio/react";
 
 /**
@@ -16,13 +17,10 @@ const Hero: FC<HeroProps> = ({ slice }) => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      Placeholder component for hero (variation: {slice.variation}) slices.
-      <br />
-      <strong>You can edit this slice directly in your code editor.</strong>
-      {/**
-       * 💡 Use the Prismic MCP server with your code editor
-       * 📚 Docs: https://prismic.io/docs/ai#code-with-prismics-mcp-server
-       */}
+      {isFilled.image(slice.primary.hero_image) ? (
+        <PrismicNextImage field={slice.primary.hero_image} />
+      ) : null}
+      {slice.primary.title ? <h1>{slice.primary.title}</h1> : null}
     </section>
   );
 };
